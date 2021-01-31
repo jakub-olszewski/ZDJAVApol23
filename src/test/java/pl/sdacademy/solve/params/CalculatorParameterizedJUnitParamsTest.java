@@ -47,4 +47,19 @@ public class CalculatorParameterizedJUnitParamsTest {
 
     }
 
+    @Test
+    // dane do testów
+    @Parameters({"1,2,-1","3,2,1","7,3,4","3,9,-6","1,9,-8"})
+    public void subParametersTest(int numberA, int numberB, String expected){
+
+        // given
+        Calculator calc = new CalculatorImpl();
+
+        // when
+        calc.sub(numberA,numberB);
+
+        // then
+        assertEquals(expected, calc.display());
+
+    }
 }

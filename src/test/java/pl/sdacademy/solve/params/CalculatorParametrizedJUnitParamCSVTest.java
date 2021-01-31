@@ -41,4 +41,31 @@ public class CalculatorParametrizedJUnitParamCSVTest {
 
     }
 
+    @Test
+    @FileParameters("src/test/resources/CalculatorParameterCSVFileSubTest.csv")
+    public void testSub(int numberA, int numberB, String expected){
+
+        // when
+        calc.sub(numberA,numberB);
+
+        // then
+        String message = String.format("Error %d - %d != %s",numberA,numberB,calc.display());
+
+        assertEquals(message,expected,calc.display());
+
+    }
+
+    @Test
+    @FileParameters("src/test/resources/CalculatorParameterCSVFileMultiTest.csv")
+    public void testMulti(int numberA, int numberB, String expected){
+
+        // when
+        calc.multi(numberA,numberB);
+
+        // then
+        String message = String.format("Error %d * %d != %s",numberA,numberB,calc.display());
+
+        assertEquals(message,expected,calc.display());
+
+    }
 }
