@@ -87,4 +87,26 @@ public class MockitoAnnotationMockTest {
         assertEquals(mockedListInMethod.size(),2020);
     }
 
+    @Test
+    public void calculatorAddMockitoTest(){
+
+        // given
+        Calculator calc = mock(Calculator.class);
+
+        // when
+        calc.add(1,2);
+        when(calc.display()).thenReturn("3");// implementacja zachowania atrapy kalkulatora
+
+        // then
+        assertEquals(calc.display(),"3");
+        // weryfikacja czy kalkulator wykonał raz metodę add
+        verify(calc,times(1)).add(anyInt(),anyInt());
+        // weryfikacja czy nigdy nie została użyta metoda div
+        verify(calc,never()).div(anyInt(),anyInt());
+    }
+
+    @Test
+    public void calculatorSubMockitoTest(){
+        // TODO Zadanie: Odejmowanie z użyciem mockito calculator
+    }
 }
